@@ -3,6 +3,7 @@ from django.db import models
 
 class ShipName(models.Model):
     """Ship Name model"""
+    name = models.CharField(max_length=50)
     imo = models.CharField(max_length=30)
 
 

@@ -9,12 +9,21 @@ from django.db import migrations
 def setup(apps, schema_editor):
     ShipName = apps.get_model('shiplocation', 'ShipName')
     ShipLocation = apps.get_model('shiplocation', 'ShipLocation')
+    name_mapping = {9632179: "Mathilde Maersk",
+                    9247455: "Australian Spirit",
+                    9595321: "MSC Preziosa"}
+    ships = []
+    for key, val in name_mapping.items():
+        ships.append(ShipName(imo=key, name=val))
+    ShipName.objects.bulk_create(ships)
     if os.path.exists('positions.csv'):
+        shiplocations = []
         for data in csv.DictReader(open('positions.csv')):
-            obj, created = ShipName.objects.get_or_create(imo=data['imo'])
+            obj = ShipName.objects.get(imo=data['imo'])
             location_data = deepcopy(data)
             location_data['imo'] = obj
-            ShipLocation.objects.create(**location_data)
+            shiplocations.append(ShipLocation(**location_data))
+        ShipLocation.objects.bulk_create(shiplocations)
 
 
 class Migration(migrations.Migration):

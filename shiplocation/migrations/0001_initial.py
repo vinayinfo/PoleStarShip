@@ -25,6 +25,7 @@ class Migration(migrations.Migration):
             name='ShipName',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('name', models.CharField(max_length=50)),
                 ('imo', models.CharField(max_length=30)),
             ],
         ),
