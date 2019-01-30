@@ -1,8 +1,9 @@
 from django.shortcuts import get_object_or_404
-from rest_framework.response import Response
 from rest_framework import viewsets
-from shiplocation.models import ShipName, ShipLocation
-from shiplocation.serializers import ShipSerializer, ShipLocationSerializer
+from rest_framework.response import Response
+
+from shiplocation.models import ShipLocation, ShipName
+from shiplocation.serializers import ShipLocationSerializer, ShipSerializer
 
 
 class ShipView(viewsets.ModelViewSet):

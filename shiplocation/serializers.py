@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from shiplocation.models import ShipName, ShipLocation
+from shiplocation.models import ShipLocation, ShipName
 
 
 class ShipSerializer(serializers.ModelSerializer):
