@@ -21,4 +21,4 @@ To get all ship
       http://localhost:8000/api/ships/
      
 To get all ship 
-      http://localhost:8000/api/positions/<imo>/
+      http://localhost:8000/api/positions/imo_id/
